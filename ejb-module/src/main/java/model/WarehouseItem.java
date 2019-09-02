@@ -61,7 +61,7 @@ public class WarehouseItem {
     @Override
     public String toString() {
         return "WarehouseItem{" +
-                "item=" + item +
+                "itemId=" + itemId +
                 ", count=" + count +
                 '}';
     }

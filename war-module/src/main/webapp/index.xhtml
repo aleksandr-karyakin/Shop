@@ -6,24 +6,63 @@
       xmlns:p="http://primefaces.org/ui">
 <h:head>
     <title>Shop</title>
+    <style type="text/css">
+        .value {
+            font-weight: bold;
+        }
+    </style>
 </h:head>
 <h:body>
-    <p:dataTable var="item" value="#{itemsController.itemList}">
-    <p:column headerText="Id">
-        <h:outputText value="#{item.id}" />
-    </p:column>
 
-    <p:column headerText="Name">
-        <h:outputText value="#{item.name}" />
-    </p:column>
+    <br/>
+    <h:form id="form">
 
-    <p:column headerText="Price">
-        <h:outputText value="#{item.price}" />
-    </p:column>
+        <p:dataGrid var="item" value="#{itemsController.itemList}" columns="3" layout="grid"
+                    rows="12" paginator="true" id="items"
+                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                    rowsPerPageTemplate="6,12,16">
 
-    <p:column headerText="Count">
-        <h:outputText value="#{item.warehouseItem.count}" />
-    </p:column>
-</p:dataTable>
+            <f:facet name="header">
+                Items for Sale
+            </f:facet>
+
+            <p:panel header="#{item.id}" style="text-align:center">
+                <h:panelGrid columns="1" style="width:100%">
+                    Picture: <p:graphicImage name="demo/images/car/#{item.pictureURL}"/>
+
+                    <h:outputText value="Name: #{item.name}"/>
+                    <h:outputText value="Price: #{item.price}"/>
+                    <h:outputText value="Count: #{item.warehouseItem.count}"/>
+                    <p:selectBooleanCheckbox value="#{item.name}" itemLabel="Check"/>
+
+                </h:panelGrid>
+            </p:panel>
+
+        </p:dataGrid>
+
+        <br/>
+        <p:commandButton value="Submit" icon="pi pi-check" update="display" oncomplete="PF('dlg').show()"  style="margin: auto"/>
+
+        <p:dialog header="Order" modal="true" resizable="false" showEffect="fade" widgetVar="dlg">
+            <h:panelGrid columns="1" id="display">
+                <h:outputText value="Success!"/>
+            </h:panelGrid>
+        </p:dialog>
+
+    </h:form>
+
+<!--    <h:form>-->
+<!--        <h:inputText value="#{bean.text}" required="true" />-->
+<!--        <h:selectOneMenu value="#{bean.choice}" required="true">-->
+<!--            <f:selectItem itemValue="#{null}" />-->
+<!--            <f:selectItem itemValue="One" />-->
+<!--            <f:selectItem itemValue="Two" />-->
+<!--            <f:selectItem itemValue="Three" />-->
+<!--        </h:selectOneMenu>-->
+<!--        <h:commandButton value="submit" action="#{bean.submit}" />-->
+<!--        <h:messages />-->
+<!--        <h:outputText value="#{bean.result}" />-->
+<!--    </h:form>-->
+
 </h:body>
 </html>

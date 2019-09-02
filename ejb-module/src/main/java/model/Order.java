@@ -2,6 +2,8 @@ package model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -71,6 +73,7 @@ public class Order {
     }
 
     public void addOrderItem(OrderItem orderItem) {
+        if (orderItems == null) orderItems = new HashSet<>();
         orderItems.add(orderItem);
         orderItem.setOrder(this);
     }
