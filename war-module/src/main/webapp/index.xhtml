@@ -28,12 +28,14 @@
 
             <p:panel header="#{item.id}" style="text-align:center">
                 <h:panelGrid columns="1" style="width:100%">
-                    Picture: <p:graphicImage name="demo/images/car/#{item.pictureURL}"/>
+                    Picture: <p:graphicImage name="http://#{item.pictureURL}"/>
 
                     <h:outputText value="Name: #{item.name}"/>
                     <h:outputText value="Price: #{item.price}"/>
-                    <h:outputText value="Count: #{item.warehouseItem.count}"/>
-                    <p:selectBooleanCheckbox value="#{item.name}" itemLabel="Check"/>
+<!--                    <p:selectBooleanCheckbox value="#{item.name}" itemLabel="Check" onchange="#{orderController.addItem(item)}"/>-->
+                    <p:selectBooleanCheckbox value="#{item.name}" itemLabel="Check">
+                        <p:ajax listener="#{orderController.addItem(item)}" />
+                    </p:selectBooleanCheckbox>
 
                 </h:panelGrid>
             </p:panel>
@@ -41,7 +43,8 @@
         </p:dataGrid>
 
         <br/>
-        <p:commandButton value="Submit" icon="pi pi-check" update="display" oncomplete="PF('dlg').show()"  style="margin: auto"/>
+        <p:commandButton value="Submit" icon="pi pi-check" update="display" oncomplete="PF('dlg').show()"
+                         style="margin: auto" action="#{orderController.createOrder()}"/>
 
         <p:dialog header="Order" modal="true" resizable="false" showEffect="fade" widgetVar="dlg">
             <h:panelGrid columns="1" id="display">

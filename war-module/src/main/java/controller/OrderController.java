@@ -7,23 +7,31 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Named
 @RequestScoped
 public class OrderController {
 
-    private static final User TEST_USER = new User("testUser");
+    private Set<OrderItem> selectedItems = new HashSet<>();
 
     @EJB
     private OrderService orderService;
 
-    public void createOrder(Item item) {
-        OrderItem orderItem = new OrderItem();
-        orderItem.setItem(item);
+    public void createOrder() {
         Order order = new Order();
         order.setDate(LocalDate.now());
         order.setOrderStatus(OrderStatus.NEW);
-        order.setUser(TEST_USER);
-        order.addOrderItem(orderItem);
+        for (OrderItem orderItem : selectedItems) {
+            order.addOrderItem(orderItem);
+        }
+        orderService.create(order);
+    }
+
+    public void addItem(Item item) {
+        OrderItem orderItem = new OrderItem();
+        orderItem.setItem(item);
+        selectedItems.add(orderItem);
     }
 }

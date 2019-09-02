@@ -23,9 +23,6 @@ public class Item {
     @Column(name = "pictureURL")
     private String pictureURL;
 
-    @OneToOne(mappedBy = "item")
-    private WarehouseItem warehouseItem;
-
     public Item() {
     }
 
@@ -66,14 +63,6 @@ public class Item {
         this.pictureURL = pictureURL;
     }
 
-    public WarehouseItem getWarehouseItem() {
-        return warehouseItem;
-    }
-
-    public void setWarehouseItem(WarehouseItem warehouseItem) {
-        this.warehouseItem = warehouseItem;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -94,7 +83,6 @@ public class Item {
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", pictureURL='" + pictureURL + '\'' +
-                ", warehouseItem=" + warehouseItem +
                 '}';
     }
 }
