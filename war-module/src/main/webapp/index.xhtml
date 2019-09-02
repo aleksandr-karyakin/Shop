@@ -54,6 +54,25 @@
 
     </h:form>
 
+    <br/>
+    <p:dataTable var="order" value="#{orderController.orderList}">
+        <p:column headerText="Id">
+            <h:outputText value="#{order.id}" />
+        </p:column>
+
+        <p:column headerText="Date">
+            <h:outputText value="#{order.date}" />
+        </p:column>
+
+        <p:column headerText="Status">
+            <h:outputText value="#{order.orderStatus}" />
+        </p:column>
+
+        <p:column headerText="Items">
+            <h:outputText value="#{order.printOrderItems()}" />
+        </p:column>
+    </p:dataTable>
+
 <!--    <h:form>-->
 <!--        <h:inputText value="#{bean.text}" required="true" />-->
 <!--        <h:selectOneMenu value="#{bean.choice}" required="true">-->

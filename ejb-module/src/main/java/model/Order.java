@@ -1,5 +1,7 @@
 package model;
 
+import org.hibernate.annotations.Fetch;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
@@ -9,7 +11,10 @@ import java.util.Set;
 
 @Entity
 @Table(name = "orders")
+@NamedQuery(name = Order.ALL_SORTED, query = "SELECT o FROM Order o ORDER BY o.date")
 public class Order {
+
+    public static final String ALL_SORTED = "Order.getAllSorted";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +31,7 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
     private Set<OrderItem> orderItems;
 
     public Order() {
@@ -81,6 +86,14 @@ public class Order {
     public void removeOrderItem(OrderItem orderItem) {
         orderItems.remove(orderItem);
         orderItem.setOrder(null);
+    }
+
+    public String printOrderItems() {
+        StringBuilder list = new StringBuilder();
+        for (OrderItem orderItem : orderItems) {
+            list.append(orderItem.getItem().getName()).append("\n");
+        }
+        return list.toString();
     }
 
     @Override

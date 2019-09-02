@@ -6,6 +6,7 @@ import model.Order;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Stateless
 public class OrderDAOImpl implements OrderDAO {
@@ -16,5 +17,10 @@ public class OrderDAOImpl implements OrderDAO {
     @Override
     public void save(Order order) {
         em.persist(order);
+    }
+
+    @Override
+    public List<Order> getAll() {
+        return em.createNamedQuery(Order.ALL_SORTED, Order.class).getResultList();
     }
 }

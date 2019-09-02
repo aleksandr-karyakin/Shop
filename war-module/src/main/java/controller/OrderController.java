@@ -8,6 +8,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Named
@@ -18,6 +19,10 @@ public class OrderController {
 
     @EJB
     private OrderService orderService;
+
+    public List<Order> getOrderList() {
+        return orderService.getAll();
+    }
 
     public void createOrder() {
         Order order = new Order();
