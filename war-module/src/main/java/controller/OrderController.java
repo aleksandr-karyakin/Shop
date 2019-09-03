@@ -10,31 +10,18 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Named
 @RequestScoped
 public class OrderController {
 
     private Set<Item> selectedItems = new HashSet<>();
-    private List<String> itemsNames = new ArrayList<>();
 
     @EJB
     private OrderService orderService;
     @EJB
-    private ItemService itemService;
-    @EJB
     private OrderItemService orderItemService;
-
-    @PostConstruct
-    public void init() {
-        for (Item item : itemService.getAll()) {
-            itemsNames.add(item.getName());
-        }
-    }
 
     public Set<Item> getSelectedItems() {
         return selectedItems;
@@ -42,14 +29,6 @@ public class OrderController {
 
     public void setSelectedItems(Set<Item> selectedItems) {
         this.selectedItems = selectedItems;
-    }
-
-    public List<String> getItemsNames() {
-        return itemsNames;
-    }
-
-    public void setItemsNames(List<String> itemsNames) {
-        this.itemsNames = itemsNames;
     }
 
     public List<Order> getOrderList() {

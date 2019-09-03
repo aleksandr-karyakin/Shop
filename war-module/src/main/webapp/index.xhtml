@@ -3,10 +3,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+>
 
 <ui:insert name="header" >
-    <ui:include src="header.xhtml" />
+    <ui:include src="templates/header.xhtml" />
 </ui:insert>
 
 <h:body>
@@ -34,9 +36,9 @@
         </p:dataGrid>
 
         <h:outputLabel for="multiple" value="Multiple:"/>
-        <p:selectCheckboxMenu id="multiple" value="#{orderController.selectedItems}" label="Cities" multiple="true"
-                              filter="true" filterMatchMode="contains" panelStyle="width:250px">
-            <f:selectItems value="#{itemsController.itemList}"/>
+        <p:selectCheckboxMenu id="multiple" value="#{orderController.selectedItems}" label="Items" multiple="true"
+                              filter="true" filterMatchMode="contains" panelStyle="width:450px">
+            <f:selectItems value="#{itemsController.itemList}" var="item" itemLabel="#{item.name}"/>
         </p:selectCheckboxMenu>
 
         <br/>
@@ -71,7 +73,7 @@
     </p:dataTable>
 
     <ui:insert name="footer" >
-        <ui:include src="footer.xhtml" />
+        <ui:include src="templates/footer.xhtml" />
     </ui:insert>
 
 </h:body>
