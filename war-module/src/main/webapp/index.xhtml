@@ -5,6 +5,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:tp = "http://java.sun.com/jsf/composite/components">
 >
 
 <ui:insert name="header" >
@@ -12,6 +13,11 @@
 </ui:insert>
 
 <h:body>
+
+    <div style="margin: 20px auto; width: 100px">
+        <tp:test okLabel = "test" cancelLabel = "test"/>
+    </div>
+
 
     <br/>
     <h:form id="form">
