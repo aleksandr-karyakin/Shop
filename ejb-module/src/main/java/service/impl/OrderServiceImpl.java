@@ -2,10 +2,12 @@ package service.impl;
 
 import dao.OrderDAO;
 import model.Order;
+import model.OrderItem;
 import service.OrderService;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Stateless
@@ -17,6 +19,11 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void create(Order order) {
         orderDAO.save(order);
+    }
+
+    @Override
+    public void update(Order order) {
+        orderDAO.update(order);
     }
 
     @Override

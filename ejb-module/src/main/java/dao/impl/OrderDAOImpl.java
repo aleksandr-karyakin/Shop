@@ -20,6 +20,11 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     @Override
+    public void update(Order order) {
+        em.merge(order);
+    }
+
+    @Override
     public List<Order> getAll() {
         return em.createNamedQuery(Order.ALL_SORTED, Order.class).getResultList();
     }

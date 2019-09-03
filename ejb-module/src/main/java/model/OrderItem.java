@@ -8,7 +8,7 @@ import java.util.Objects;
 public class OrderItem {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @OneToOne
@@ -64,7 +64,6 @@ public class OrderItem {
         return "OrderItem{" +
                 "id=" + id +
                 ", item=" + item +
-                ", order=" + order +
                 '}';
     }
 }

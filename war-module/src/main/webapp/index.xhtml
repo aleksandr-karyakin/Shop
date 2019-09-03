@@ -29,18 +29,18 @@
             <p:panel header="#{item.id}" style="text-align:center">
                 <h:panelGrid columns="1" style="width:100%">
                     Picture: <p:graphicImage name="http://#{item.pictureURL}"/>
-
                     <h:outputText value="Name: #{item.name}"/>
                     <h:outputText value="Price: #{item.price}"/>
-<!--                    <p:selectBooleanCheckbox value="#{item.name}" itemLabel="Check" onchange="#{orderController.addItem(item)}"/>-->
-                    <p:selectBooleanCheckbox value="#{item.name}" itemLabel="Check">
-                        <p:ajax listener="#{orderController.addItem(item)}" />
-                    </p:selectBooleanCheckbox>
-
                 </h:panelGrid>
             </p:panel>
 
         </p:dataGrid>
+
+        <h:outputLabel for="multiple" value="Multiple:"/>
+        <p:selectCheckboxMenu id="multiple" value="#{orderController.selectedItems}" label="Cities" multiple="true"
+                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+            <f:selectItems value="#{itemsController.itemList}"/>
+        </p:selectCheckboxMenu>
 
         <br/>
         <p:commandButton value="Submit" icon="pi pi-check" update="display" oncomplete="PF('dlg').show()"
@@ -57,34 +57,21 @@
     <br/>
     <p:dataTable var="order" value="#{orderController.orderList}">
         <p:column headerText="Id">
-            <h:outputText value="#{order.id}" />
+            <h:outputText value="#{order.id}"/>
         </p:column>
 
         <p:column headerText="Date">
-            <h:outputText value="#{order.date}" />
+            <h:outputText value="#{order.date}"/>
         </p:column>
 
         <p:column headerText="Status">
-            <h:outputText value="#{order.orderStatus}" />
+            <h:outputText value="#{order.orderStatus}"/>
         </p:column>
 
         <p:column headerText="Items">
-            <h:outputText value="#{order.printOrderItems()}" />
+            <h:outputText value="#{order.printOrderItems()}"/>
         </p:column>
     </p:dataTable>
-
-<!--    <h:form>-->
-<!--        <h:inputText value="#{bean.text}" required="true" />-->
-<!--        <h:selectOneMenu value="#{bean.choice}" required="true">-->
-<!--            <f:selectItem itemValue="#{null}" />-->
-<!--            <f:selectItem itemValue="One" />-->
-<!--            <f:selectItem itemValue="Two" />-->
-<!--            <f:selectItem itemValue="Three" />-->
-<!--        </h:selectOneMenu>-->
-<!--        <h:commandButton value="submit" action="#{bean.submit}" />-->
-<!--        <h:messages />-->
-<!--        <h:outputText value="#{bean.result}" />-->
-<!--    </h:form>-->
 
 </h:body>
 </html>

@@ -116,7 +116,6 @@ public class Order {
                 ", date=" + date +
                 ", user=" + user +
                 ", orderState=" + orderStatus +
-                ", orderItems=" + orderItems +
                 '}';
     }
 }
