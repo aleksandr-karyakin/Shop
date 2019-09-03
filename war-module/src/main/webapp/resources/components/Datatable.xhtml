@@ -4,12 +4,29 @@
 
 <html xmlns = "http://www.w3.org/1999/xhtml"
       xmlns:h = "http://java.sun.com/jsf/html"
-      xmlns:ui = "http://java.sun.com/jsf/facelets">
+      xmlns:ui = "http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+>
 
 <h:body>
     <ui:composition>
-        <h:commandButton type = "submit" value = "#{okLabel}" />
-        <h:commandButton type = "reset" value = "#{cancelLabel}" />
+        <p:dataTable var="order" value="#{orderList}">
+            <p:column headerText="Id">
+                <h:outputText value="#{order.id}"/>
+            </p:column>
+
+            <p:column headerText="Date">
+                <h:outputText value="#{order.date}"/>
+            </p:column>
+
+            <p:column headerText="Status">
+                <h:outputText value="#{order.orderStatus}"/>
+            </p:column>
+
+            <p:column headerText="Items">
+                <h:outputText value="#{order.printOrderItems()}"/>
+            </p:column>
+        </p:dataTable>
     </ui:composition>
 </h:body>
 </html>

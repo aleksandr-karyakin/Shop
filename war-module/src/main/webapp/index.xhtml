@@ -5,61 +5,30 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:tp = "http://java.sun.com/jsf/composite/components">
->
+      xmlns:tp = "http://java.sun.com/jsf/composite/components">>
 
 <ui:insert name="header" >
     <ui:include src="templates/header.xhtml" />
 </ui:insert>
 
 <h:body>
-
-    <div style="margin: 20px auto; width: 100px">
-        <tp:test okLabel = "test" cancelLabel = "test"/>
-    </div>
-
     <br/>
     <h:form id="form">
+        <tp:itemList itemList="${itemsController.itemList}"/>
+        <tp:selectItem selectItem="#{orderController.selectedItems}"/>
 
-        <p:dataGrid var="item" value="#{itemsController.itemList}" columns="3" layout="grid"
-                    rows="12" paginator="true" id="items"
-                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                    rowsPerPageTemplate="6,12,16">
-
-            <f:facet name="header">
-                Items for Sale
-            </f:facet>
-
-            <p:panel header="#{item.id}" style="text-align:center">
-                <h:panelGrid columns="1" style="width:100%">
-                    Picture: <p:graphicImage name="http://#{item.pictureURL}"/>
-                    <h:outputText value="Name: #{item.name}"/>
-                    <h:outputText value="Price: #{item.price}"/>
-                </h:panelGrid>
-            </p:panel>
-
-        </p:dataGrid>
-
-        <h:outputLabel for="multiple" value="Multiple:"/>
-        <p:selectCheckboxMenu id="multiple" value="#{orderController.selectedItems}" label="Items" multiple="true"
-                              filter="true" filterMatchMode="contains" panelStyle="width:450px">
-            <f:selectItems value="#{itemsController.itemList}" var="item" itemLabel="#{item.name}"/>
-        </p:selectCheckboxMenu>
-
-        <br/>
         <p:commandButton value="Submit" icon="pi pi-check" update="display" oncomplete="PF('dlg').show()"
                          style="margin: auto" action="#{orderController.createOrder()}"/>
 
+        <br/>
         <p:dialog header="Order" modal="true" resizable="false" showEffect="fade" widgetVar="dlg">
             <h:panelGrid columns="1" id="display">
                 <h:outputText value="Success!"/>
             </h:panelGrid>
         </p:dialog>
-
     </h:form>
 
     <br/>
-
     <tp:datatable orderList="#{orderController.orderList}"/>
 
     <ui:insert name="footer" >

@@ -3,16 +3,30 @@
                 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd">
     <namespace>http://java.sun.com/jsf/composite/components</namespace>
     <tag>
-        <tag-name>test</tag-name>
-        <source>Composite.xhtml</source>
-    </tag>
-    <tag>
         <tag-name>datatable</tag-name>
         <source>Datatable.xhtml</source>
         <attribute>
             <description>List of orders</description>
             <name>orderList</name>
             <type>java.util.List</type>
+        </attribute>
+    </tag>
+    <tag>
+        <tag-name>itemList</tag-name>
+        <source>Item.xhtml</source>
+        <attribute>
+            <description>List of items</description>
+            <name>itemList</name>
+            <type>java.util.List</type>
+        </attribute>
+    </tag>
+    <tag>
+        <tag-name>selectItem</tag-name>
+        <source>SelectItem.xhtml</source>
+        <attribute>
+            <description>Select item</description>
+            <name>selectItem</name>
+            <type>java.util.Set</type>
         </attribute>
     </tag>
 </facelet-taglib>
