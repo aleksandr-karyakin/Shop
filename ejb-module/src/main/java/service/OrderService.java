@@ -11,4 +11,6 @@ public interface OrderService {
     void update(Order order);
 
     List<Order> getAll();
+
+    Order get(Integer id);
 }

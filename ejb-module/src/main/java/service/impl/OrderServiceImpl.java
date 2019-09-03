@@ -30,4 +30,9 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> getAll() {
         return orderDAO.getAll();
     }
+
+    @Override
+    public Order get(Integer id) {
+        return orderDAO.get(id);
+    }
 }

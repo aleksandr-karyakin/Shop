@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<f:view>
+<!--    <h:outputText value="#{param['id']}" />-->
+<!--    <h:outputText value="#{orderController.getOrder(param['id']).printOrderItems()}" />-->
+    <h:outputText value="#{orderController.getOrder(param['id']).orderItems}" />
+    <p:dataTable var="orderItem" value="#{orderController.getOrder(param['id']).orderItems}">
+        <p:column headerText="Id">
+            <h:outputText value="#{orderItem.id}"/>
+        </p:column>
+
+        <p:column headerText="Date">
+            <h:outputText value="#{orderItem.item.name}"/>
+        </p:column>
+
+        <p:column headerText="Status">
+            <h:outputText value="#{orderItem.item.price}"/>
+        </p:column>
+    </p:dataTable>
+</f:view>
+</html>

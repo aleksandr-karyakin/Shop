@@ -28,4 +28,10 @@ public class OrderDAOImpl implements OrderDAO {
     public List<Order> getAll() {
         return em.createNamedQuery(Order.ALL_SORTED, Order.class).getResultList();
     }
+
+    @Override
+    public Order get(Integer id) {
+        return em.find(Order.class, id);
+    }
+
 }

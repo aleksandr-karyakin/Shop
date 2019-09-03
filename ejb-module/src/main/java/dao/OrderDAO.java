@@ -11,4 +11,6 @@ public interface OrderDAO {
     void update(Order order);
 
     List<Order> getAll();
+
+    Order get(Integer id);
 }

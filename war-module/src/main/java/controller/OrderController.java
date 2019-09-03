@@ -35,6 +35,10 @@ public class OrderController {
         return orderService.getAll();
     }
 
+    public Order getOrder(Integer id) {
+        return orderService.get(id);
+    }
+
     public void createOrder() {
         Order order = new Order();
         order.setDate(LocalDate.now());
