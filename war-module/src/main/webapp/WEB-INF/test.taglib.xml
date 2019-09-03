@@ -6,4 +6,13 @@
         <tag-name>test</tag-name>
         <source>Composite.xhtml</source>
     </tag>
+    <tag>
+        <tag-name>datatable</tag-name>
+        <source>Datatable.xhtml</source>
+        <attribute>
+            <description>List of orders</description>
+            <name>orderList</name>
+            <type>java.util.List</type>
+        </attribute>
+    </tag>
 </facelet-taglib>

@@ -18,7 +18,6 @@
         <tp:test okLabel = "test" cancelLabel = "test"/>
     </div>
 
-
     <br/>
     <h:form id="form">
 
@@ -60,23 +59,8 @@
     </h:form>
 
     <br/>
-    <p:dataTable var="order" value="#{orderController.orderList}">
-        <p:column headerText="Id">
-            <h:outputText value="#{order.id}"/>
-        </p:column>
 
-        <p:column headerText="Date">
-            <h:outputText value="#{order.date}"/>
-        </p:column>
-
-        <p:column headerText="Status">
-            <h:outputText value="#{order.orderStatus}"/>
-        </p:column>
-
-        <p:column headerText="Items">
-            <h:outputText value="#{order.printOrderItems()}"/>
-        </p:column>
-    </p:dataTable>
+    <tp:datatable orderList="#{orderController.orderList}"/>
 
     <ui:insert name="footer" >
         <ui:include src="templates/footer.xhtml" />

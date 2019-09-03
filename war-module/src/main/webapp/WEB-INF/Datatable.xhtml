@@ -1,0 +1,32 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns = "http://www.w3.org/1999/xhtml"
+      xmlns:h = "http://java.sun.com/jsf/html"
+      xmlns:ui = "http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+>
+
+<h:body>
+    <ui:composition>
+        <p:dataTable var="order" value="#{orderList}">
+            <p:column headerText="Id">
+                <h:outputText value="#{order.id}"/>
+            </p:column>
+
+            <p:column headerText="Date">
+                <h:outputText value="#{order.date}"/>
+            </p:column>
+
+            <p:column headerText="Status">
+                <h:outputText value="#{order.orderStatus}"/>
+            </p:column>
+
+            <p:column headerText="Items">
+                <h:outputText value="#{order.printOrderItems()}"/>
+            </p:column>
+        </p:dataTable>
+    </ui:composition>
+</h:body>
+</html>
