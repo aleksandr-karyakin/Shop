@@ -38,7 +38,7 @@
 
         <h:outputLabel for="multiple" value="Multiple:"/>
         <p:selectCheckboxMenu id="multiple" value="#{orderController.selectedItems}" label="Cities" multiple="true"
-                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+                              filter="true" filterMatchMode="contains" panelStyle="width:250px">
             <f:selectItems value="#{itemsController.itemList}"/>
         </p:selectCheckboxMenu>
 
