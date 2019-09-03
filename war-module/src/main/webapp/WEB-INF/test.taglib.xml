@@ -29,4 +29,8 @@
             <type>java.util.Set</type>
         </attribute>
     </tag>
+    <tag>
+        <tag-name>createOrder</tag-name>
+        <source>CreateOrder.xhtml</source>
+    </tag>
 </facelet-taglib>

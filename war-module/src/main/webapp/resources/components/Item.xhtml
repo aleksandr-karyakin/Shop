@@ -1,0 +1,31 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns = "http://www.w3.org/1999/xhtml"
+      xmlns:h = "http://java.sun.com/jsf/html"
+      xmlns:ui = "http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:body>
+    <ui:composition>
+        <p:dataGrid var="item" value="#{itemList}" columns="3" layout="grid"
+                    rows="12" paginator="true" id="items"
+                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                    rowsPerPageTemplate="6,12,16">
+
+            <f:facet name="header">
+                Items for Sale
+            </f:facet>
+
+            <p:panel header="#{item.id}" style="text-align:center">
+                <h:panelGrid columns="1" style="width:100%">
+                    Picture: <p:graphicImage name="http://#{item.pictureURL}"/>
+                    <h:outputText value="Name: #{item.name}"/>
+                    <h:outputText value="Price: #{item.price}"/>
+                </h:panelGrid>
+            </p:panel>
+
+        </p:dataGrid>
+    </ui:composition>
+</h:body>
+</html>

@@ -16,16 +16,7 @@
     <h:form id="form">
         <tp:itemList itemList="${itemsController.itemList}"/>
         <tp:selectItem selectItem="#{orderController.selectedItems}"/>
-
-        <p:commandButton value="Submit" icon="pi pi-check" update="display" oncomplete="PF('dlg').show()"
-                         style="margin: auto" action="#{orderController.createOrder()}"/>
-
-        <br/>
-        <p:dialog header="Order" modal="true" resizable="false" showEffect="fade" widgetVar="dlg">
-            <h:panelGrid columns="1" id="display">
-                <h:outputText value="Success!"/>
-            </h:panelGrid>
-        </p:dialog>
+        <tp:createOrder/>
     </h:form>
 
     <br/>
