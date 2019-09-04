@@ -18,4 +18,9 @@ public class ItemDAOImpl implements ItemDAO {
     public List<Item> getAll() {
         return em.createNamedQuery(Item.ALL_SORTED, Item.class).getResultList();
     }
+
+    @Override
+    public Integer getWarehouseBalance(Integer id) {
+        return em.createNamedQuery(Item.GET_BALANCE, Integer.class).setParameter(1, id).getResultList().get(0);
+    }
 }

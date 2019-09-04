@@ -44,6 +44,7 @@ public class OrderController {
         return orderItemService.get(id);
     }
 
+    @Transactional
     public void changeCount(Integer id, Integer count) {
         OrderItem orderItem = getOrderItem(id);
         orderItem.setCount(count);
@@ -68,6 +69,14 @@ public class OrderController {
         orderItemService.update(orderItem);
     }
 
+    @Transactional
+    public void sendOrder(Integer id) {
+        Order order = getOrder(id);
+        order.setOrderStatus(OrderStatus.SENDED);
+        orderService.update(order);
+    }
+
+    @Transactional
     public void createOrder() {
         Order order = new Order();
         order.setDate(LocalDate.now());

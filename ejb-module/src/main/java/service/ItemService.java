@@ -8,4 +8,6 @@ import java.util.List;
 public interface ItemService {
 
     List<Item> getAll();
+
+    Integer getBalance(Integer id);
 }

@@ -18,4 +18,8 @@ public class ItemsController {
     public List<Item> getItemList() {
         return itemService.getAll();
     }
+
+    public Integer getBalance(Integer id) {
+        return itemService.getBalance(id);
+    }
 }

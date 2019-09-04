@@ -46,6 +46,12 @@
 
         <h:outputText id="sum"  value="Sum: #{orderController.getOrderSum(param['id'])}" style="float: right; margin: 50px; font-weight: bold"/>
 
+        <h:form>
+            <p:commandButton value="Submit" actionListener="#{orderController.sendOrder(param['id'])}" ajax="false">
+                <f:param name="id" value="#{param['id']}" />
+            </p:commandButton>
+        </h:form>
+
     </ui:composition>
 </f:view>
 </html>

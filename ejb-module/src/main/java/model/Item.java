@@ -1,14 +1,17 @@
 package model;
 
+import javax.inject.Named;
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "items")
 @NamedQuery(name = Item.ALL_SORTED, query = "SELECT i FROM Item i ORDER BY i.name")
+@NamedQuery(name = Item.GET_BALANCE, query = "SELECT w.count FROM Item i JOIN FETCH WarehouseItem w ON i.id=w.itemId WHERE i.id=?1")
 public class Item {
 
     public static final String ALL_SORTED = "Item.getAllSorted";
+    public static final String GET_BALANCE = "Item.getBalance";
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -22,6 +22,7 @@
                     Picture: <p:graphicImage name="http://#{item.pictureURL}"/>
                     <h:outputText value="Name: #{item.name}"/>
                     <h:outputText value="Price: #{item.price}"/>
+                    <h:outputText value="Balance: #{itemsController.getBalance(item.id)}"/>
                 </h:panelGrid>
             </p:panel>
 

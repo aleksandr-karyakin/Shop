@@ -18,4 +18,9 @@ public class ItemServiceImpl implements ItemService {
     public List<Item> getAll() {
         return itemDAO.getAll();
     }
+
+    @Override
+    public Integer getBalance(Integer id) {
+        return itemDAO.getWarehouseBalance(id);
+    }
 }
