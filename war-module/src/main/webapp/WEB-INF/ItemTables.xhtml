@@ -8,7 +8,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
     <ui:composition>
-        <p:dataTable var="orderItem" value="#{orderItems}">
+        <p:dataTable id="table" var="orderItem" value="#{orderItems}">
             <p:column headerText="Id">
                 <h:outputText value="#{orderItem.id}"/>
             </p:column>
@@ -17,10 +17,32 @@
                 <h:outputText value="#{orderItem.item.name}"/>
             </p:column>
 
-            <p:column headerText="Status">
-                <h:outputText value="#{orderItem.item.price}"/>
+            <p:column headerText="Price">
+                <h:outputText binding="#{colPrice}" value="#{orderItem.item.price}"/>
+            </p:column>
+
+            <p:column id="count" headerText="Count">
+                <!--                <p:outputPanel>-->
+                <!--                    <p:spinner id="ajaxSpinner" value="#{orderItem.count}">-->
+                <!--                        <p:ajax update="ajaxSpinnerValue" process="@parent"/>-->
+                <!--                    </p:spinner>-->
+                <!--                    <h:outputText id="ajaxSpinnerValue" value="#{orderItem.count}" binding="#{colCount}"/>-->
+                <!--                </p:outputPanel>-->
+                <h:form>
+                    <p:inputText id="name" binding="#{input1}"/>
+                    <p:commandButton value="Submit" update="table" icon="ui-icon-check" action="#{orderController.changeCount(orderItem.id, input1.value)}">
+                        <f:param name="id" value="#{param['id']}" />
+                    </p:commandButton>
+                    <h:outputText id="display" value="#{orderItem.count}" binding="#{colCount}"/>
+                </h:form>
+            </p:column>
+
+            <p:column headerText="Sum">
+                <h:outputText value="#{colPrice.value * colCount.value}"/>
             </p:column>
         </p:dataTable>
+
+
     </ui:composition>
 </f:view>
 </html>

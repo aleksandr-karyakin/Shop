@@ -17,4 +17,14 @@ public class OrderItemServiceImpl implements OrderItemService {
     public void create(OrderItem orderItem) {
         orderItemDAO.save(orderItem);
     }
+
+    @Override
+    public OrderItem get(Integer id) {
+        return orderItemDAO.get(id);
+    }
+
+    @Override
+    public void update(OrderItem orderItem) {
+        orderItemDAO.update(orderItem);
+    }
 }

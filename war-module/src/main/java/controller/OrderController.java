@@ -39,6 +39,16 @@ public class OrderController {
         return orderService.get(id);
     }
 
+    public OrderItem getOrderItem(Integer id) {
+        return orderItemService.get(id);
+    }
+
+    public void changeCount(Integer id, Integer count) {
+        OrderItem orderItem = getOrderItem(id);
+        orderItem.setCount(count);
+        orderItemService.update(orderItem);
+    }
+
     public void createOrder() {
         Order order = new Order();
         order.setDate(LocalDate.now());
@@ -46,6 +56,7 @@ public class OrderController {
         for (Item item : selectedItems) {
             OrderItem orderItem = new OrderItem();
             orderItem.setItem(item);
+            orderItem.setCount(1);
             order.addOrderItem(orderItem);
             orderItemService.create(orderItem);
         }

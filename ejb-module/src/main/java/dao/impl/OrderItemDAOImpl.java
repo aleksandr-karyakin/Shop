@@ -17,4 +17,14 @@ public class OrderItemDAOImpl implements OrderItemDAO {
     public void save(OrderItem orderItem) {
         em.persist(orderItem);
     }
+
+    @Override
+    public OrderItem get(Integer id) {
+        return em.find(OrderItem.class, id);
+    }
+
+    @Override
+    public void update(OrderItem orderItem) {
+        em.merge(orderItem);
+    }
 }
