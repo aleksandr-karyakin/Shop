@@ -49,6 +49,15 @@ public class OrderController {
         orderItemService.update(orderItem);
     }
 
+    public Integer getOrderSum(Integer id) {
+        int sum = 0;
+        Order order = getOrder(id);
+        for (OrderItem orderItem : order.getOrderItems()) {
+            sum += orderItem.getCount() * orderItem.getItem().getPrice();
+        }
+        return sum;
+    }
+
     public void createOrder() {
         Order order = new Order();
         order.setDate(LocalDate.now());
