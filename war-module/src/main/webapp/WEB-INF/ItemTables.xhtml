@@ -8,27 +8,17 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
     <ui:composition>
-        <p:dataTable var="order" value="#{orderList}">
+        <p:dataTable var="orderItem" value="#{orderItems}">
             <p:column headerText="Id">
-                <h:outputText value="#{order.id}"/>
+                <h:outputText value="#{orderItem.id}"/>
             </p:column>
 
             <p:column headerText="Date">
-                <h:outputText value="#{order.date}"/>
+                <h:outputText value="#{orderItem.item.name}"/>
             </p:column>
 
             <p:column headerText="Status">
-                <h:outputText value="#{order.orderStatus}"/>
-            </p:column>
-
-            <p:column headerText="Items">
-                <h:outputText value="#{order.printOrderItems()}"/>
-            </p:column>
-
-            <p:column headerText="Edit">
-                <h:link value="edit" outcome="basket.xhtml">
-                    <f:param name="id" value="#{order.id}"/>
-                </h:link>
+                <h:outputText value="#{orderItem.item.price}"/>
             </p:column>
         </p:dataTable>
     </ui:composition>

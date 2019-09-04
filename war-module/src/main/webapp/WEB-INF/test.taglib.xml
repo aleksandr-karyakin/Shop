@@ -33,4 +33,12 @@
         <tag-name>createOrder</tag-name>
         <source>CreateOrder.xhtml</source>
     </tag>
+    <tag>
+        <tag-name>itemTables</tag-name>
+        <source>ItemTables.xhtml</source>
+        <attribute>
+            <name>orderItems</name>
+            <type>java.util.List</type>
+        </attribute>
+    </tag>
 </facelet-taglib>

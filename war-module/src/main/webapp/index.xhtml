@@ -5,7 +5,8 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:tp = "http://java.sun.com/jsf/composite/components">>
+      xmlns:tp = "http://java.sun.com/jsf/composite/components"
+>
 
 <ui:insert name="header" >
     <ui:include src="templates/header.xhtml" />
@@ -19,12 +20,8 @@
         <tp:createOrder/>
     </h:form>
 
-    <br/>
-    <tp:datatable orderList="#{orderController.orderList}"/>
-
     <ui:insert name="footer" >
         <ui:include src="templates/footer.xhtml" />
     </ui:insert>
-
 </h:body>
 </html>
