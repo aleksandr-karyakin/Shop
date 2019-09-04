@@ -13,7 +13,7 @@
                 <h:outputText value="#{orderItem.id}"/>
             </p:column>
 
-            <p:column headerText="Date">
+            <p:column headerText="Name">
                 <h:outputText value="#{orderItem.item.name}"/>
             </p:column>
 
@@ -22,15 +22,9 @@
             </p:column>
 
             <p:column id="count" headerText="Count">
-                <!--                <p:outputPanel>-->
-                <!--                    <p:spinner id="ajaxSpinner" value="#{orderItem.count}">-->
-                <!--                        <p:ajax update="ajaxSpinnerValue" process="@parent"/>-->
-                <!--                    </p:spinner>-->
-                <!--                    <h:outputText id="ajaxSpinnerValue" value="#{orderItem.count}" binding="#{colCount}"/>-->
-                <!--                </p:outputPanel>-->
                 <h:form>
                     <p:inputText id="name" binding="#{input1}"/>
-                    <p:commandButton value="Submit" update="table" icon="ui-icon-check" action="#{orderController.changeCount(orderItem.id, input1.value)}">
+                    <p:commandButton value="Submit" update="table sum" icon="ui-icon-check" action="#{orderController.changeCount(orderItem.id, input1.value)}">
                         <f:param name="id" value="#{param['id']}" />
                     </p:commandButton>
                     <h:outputText id="display" value="#{orderItem.count}" binding="#{colCount}"/>
@@ -42,6 +36,7 @@
             </p:column>
         </p:dataTable>
 
+        <h:outputText id="sum"  value="Sum: #{orderController.getOrderSum(param['id'])}" style="float: right; margin: 50px; font-weight: bold"/>
 
     </ui:composition>
 </f:view>
