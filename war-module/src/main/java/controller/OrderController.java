@@ -9,6 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -56,6 +57,15 @@ public class OrderController {
             sum += orderItem.getCount() * orderItem.getItem().getPrice();
         }
         return sum;
+    }
+
+    @Transactional
+    public void deleteItemFromOrder(Integer orderId, Integer itemId) {
+        Order order = getOrder(orderId);
+        OrderItem orderItem = getOrderItem(itemId);
+        order.removeOrderItem(orderItem);
+        orderService.update(order);
+        orderItemService.update(orderItem);
     }
 
     public void createOrder() {

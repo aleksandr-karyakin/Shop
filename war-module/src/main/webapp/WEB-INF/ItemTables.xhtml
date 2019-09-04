@@ -34,6 +34,14 @@
             <p:column headerText="Sum">
                 <h:outputText value="#{colPrice.value * colCount.value}"/>
             </p:column>
+
+            <p:column headerText="Delete">
+                <h:form>
+                    <p:commandButton icon="ui-icon-trash" title="Delete this actor" actionListener="#{orderController.deleteItemFromOrder(param['id'], orderItem.id)}" ajax="false">
+                        <f:param name="id" value="#{param['id']}" />
+                    </p:commandButton>
+                </h:form>
+            </p:column>
         </p:dataTable>
 
         <h:outputText id="sum"  value="Sum: #{orderController.getOrderSum(param['id'])}" style="float: right; margin: 50px; font-weight: bold"/>
