@@ -7,9 +7,9 @@
       xmlns:p="http://primefaces.org/ui">
 <h:body>
     <ui:composition>
-        <p:commandButton value="Submit" icon="pi pi-check" update="display" oncomplete="PF('dlg').show()"
-                         style="margin: auto" action="#{orderController.createOrder()}"/>
         <br/>
+        <p:commandButton value="Create order" update="display" oncomplete="PF('dlg').show()"
+                         style="margin: auto" action="#{orderController.createOrder()}"/>
         <p:dialog header="Order" modal="true" resizable="false" showEffect="fade" widgetVar="dlg">
             <h:panelGrid columns="1" id="display">
                 <h:outputText value="Success!"/>

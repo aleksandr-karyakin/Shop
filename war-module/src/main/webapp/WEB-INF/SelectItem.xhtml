@@ -8,13 +8,10 @@
       xmlns:f="http://java.sun.com/jsf/core">
 <h:body>
     <ui:composition>
-        <br/>
-        <h:outputLabel for="multiple" value="Multiple:"/>
         <p:selectCheckboxMenu id="multiple" value="#{selectItem}" label="Items" multiple="true"
                               filter="true" filterMatchMode="contains" panelStyle="width:450px">
             <f:selectItems value="#{itemsController.itemList}" var="item" itemLabel="#{item.name}"/>
         </p:selectCheckboxMenu>
-        <br/>
     </ui:composition>
 </h:body>
 </html>

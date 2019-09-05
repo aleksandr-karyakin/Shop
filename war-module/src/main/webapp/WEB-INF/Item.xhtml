@@ -9,7 +9,7 @@
 <h:body>
     <ui:composition>
         <p:dataGrid var="item" value="#{itemList}" columns="3" layout="grid"
-                    rows="12" paginator="true" id="items"
+                    rows="6" paginator="true" id="items"
                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                     rowsPerPageTemplate="6,12,16">
 
@@ -19,7 +19,8 @@
 
             <p:panel header="#{item.id}" style="text-align:center">
                 <h:panelGrid columns="1" style="width:100%">
-                    Picture: <p:graphicImage name="http://#{item.pictureURL}"/>
+                    Picture: <br/><img src="http://#{item.pictureURL}" alt="placeholder for image"
+                                       style="min-width: 100px; min-height: 100px; border: 1px solid"/>
                     <h:outputText value="Name: #{item.name}"/>
                     <h:outputText value="Price: #{item.price}"/>
                     <h:outputText value="Balance: #{itemsController.getBalance(item.id)}"/>
