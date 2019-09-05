@@ -11,6 +11,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "orders")
+@Inheritance(strategy = InheritanceType.JOINED)
 @NamedQuery(name = Order.ALL_SORTED, query = "SELECT o FROM Order o ORDER BY o.date")
 public class Order {
 

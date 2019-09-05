@@ -39,6 +39,13 @@ public class OrderController {
         return orderService.getAll();
     }
 
+    public String getAddress(Integer id) {
+        Order order = getOrder(id);
+        if (order instanceof DeliveryOrder) {
+            return ((DeliveryOrder) order).getAddress();
+        } else return "no address";
+    }
+
     public Order getOrder(Integer id) {
         return orderService.get(id);
     }

@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS prepaymentOrders;
+DROP TABLE IF EXISTS deliveryOrders;
 DROP TABLE IF EXISTS orderItems;
 DROP TABLE IF EXISTS orders;
 DROP TABLE IF EXISTS warehouse;
@@ -13,3 +15,7 @@ CREATE TABLE warehouse(item_id int not null, count int not null, foreign key (it
 CREATE TABLE orders(id int primary key auto_increment, user_id int, date date default current_date(), status varchar(255) default 'NEW', foreign key (user_id) references users(id));
 
 CREATE TABLE orderItems(id int primary key auto_increment, order_id int, item_id int not null, count int default 1, foreign key (order_id) references orders(id), foreign key (item_id) references items(id), unique(order_id, item_id));
+
+CREATE TABLE prepaymentOrders(order_id int not null, prepayment int, foreign key (order_id) references orders(id));
+
+CREATE TABLE deliveryOrders(order_id int not null, address varchar(255), foreign key (order_id) references orders(id));

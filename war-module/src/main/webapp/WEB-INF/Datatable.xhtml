@@ -30,6 +30,16 @@
                     <f:param name="id" value="#{order.id}"/>
                 </h:link>
             </p:column>
+
+            <p:column headerText="Address">
+                <h:outputText value="#{orderController.getAddress(order.id)}"/>
+            </p:column>
+
+            <p:column headerText="Prepayment">
+                <c:if test="${not empty order.prepayment}">
+                    <h:outputText var="prepayment" value="#{order.prepayment}"/>
+                </c:if>
+            </p:column>
         </p:dataTable>
     </ui:composition>
 </f:view>
