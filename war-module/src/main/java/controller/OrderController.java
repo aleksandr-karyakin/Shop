@@ -4,6 +4,7 @@ import model.*;
 import service.ItemService;
 import service.OrderItemService;
 import service.OrderService;
+import service.WarehouseService;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -23,6 +24,8 @@ public class OrderController {
     private OrderService orderService;
     @EJB
     private OrderItemService orderItemService;
+    @EJB
+    private WarehouseService warehouseService;
 
     public Set<Item> getSelectedItems() {
         return selectedItems;
@@ -74,6 +77,11 @@ public class OrderController {
         Order order = getOrder(id);
         order.setOrderStatus(OrderStatus.SENDED);
         orderService.update(order);
+        for (OrderItem orderItem : order.getOrderItems()) {
+            Integer itemId = orderItem.getItem().getId();
+            Integer changeBy = orderItem.getCount();
+            warehouseService.changeCount(itemId, changeBy);
+        };
     }
 
     @Transactional
