@@ -17,11 +17,13 @@ public class OrderServiceImpl implements OrderService {
     private OrderDAO orderDAO;
 
     @Override
+    @Transactional
     public void create(Order order) {
         orderDAO.save(order);
     }
 
     @Override
+    @Transactional
     public void update(Order order) {
         orderDAO.update(order);
     }

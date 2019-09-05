@@ -6,6 +6,7 @@ import model.OrderItem;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 @Stateless
 public class OrderItemDAOImpl implements OrderItemDAO {
@@ -14,6 +15,7 @@ public class OrderItemDAOImpl implements OrderItemDAO {
     private EntityManager em;
 
     @Override
+    @Transactional
     public void save(OrderItem orderItem) {
         em.persist(orderItem);
     }
@@ -24,6 +26,7 @@ public class OrderItemDAOImpl implements OrderItemDAO {
     }
 
     @Override
+    @Transactional
     public void update(OrderItem orderItem) {
         em.merge(orderItem);
     }

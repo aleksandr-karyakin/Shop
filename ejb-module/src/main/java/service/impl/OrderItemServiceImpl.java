@@ -6,6 +6,7 @@ import service.OrderItemService;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.transaction.Transactional;
 
 @Stateless
 public class OrderItemServiceImpl implements OrderItemService {
@@ -14,6 +15,7 @@ public class OrderItemServiceImpl implements OrderItemService {
     private OrderItemDAO orderItemDAO;
 
     @Override
+    @Transactional
     public void create(OrderItem orderItem) {
         orderItemDAO.save(orderItem);
     }
@@ -24,6 +26,7 @@ public class OrderItemServiceImpl implements OrderItemService {
     }
 
     @Override
+    @Transactional
     public void update(OrderItem orderItem) {
         orderItemDAO.update(orderItem);
     }

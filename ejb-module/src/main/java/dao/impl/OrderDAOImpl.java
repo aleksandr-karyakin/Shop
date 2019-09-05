@@ -6,6 +6,7 @@ import model.Order;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Stateless
@@ -15,11 +16,13 @@ public class OrderDAOImpl implements OrderDAO {
     private EntityManager em;
 
     @Override
+    @Transactional
     public void save(Order order) {
         em.persist(order);
     }
 
     @Override
+    @Transactional
     public void update(Order order) {
         em.merge(order);
     }
