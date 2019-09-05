@@ -9,7 +9,7 @@
     <ui:composition>
         <br/>
         <p:commandButton value="Create order" update="display" oncomplete="PF('dlg').show()"
-                         style="margin: auto" action="#{orderController.createOrder()}"/>
+                         style="margin: auto" action="#{orderController.createOrder(orderController.selectedItems)}"/>
         <p:dialog header="Order" modal="true" resizable="false" showEffect="fade" widgetVar="dlg">
             <h:panelGrid columns="1" id="display">
                 <h:outputText value="Success!"/>

@@ -85,11 +85,11 @@ public class OrderController {
     }
 
     @Transactional
-    public void createOrder() {
+    public void createOrder(List<Item> items) {
         Order order = new Order();
         order.setDate(LocalDate.now());
         orderService.create(order);
-        for (Item item : selectedItems) {
+        for (Item item : items) {
             OrderItem orderItem = new OrderItem();
             orderItem.setItem(item);
             orderItem.setCount(1);
@@ -99,5 +99,4 @@ public class OrderController {
         order.setOrderStatus(OrderStatus.NEW);
         orderService.update(order);
     }
-
 }

@@ -15,6 +15,16 @@ public class ItemsController {
     @EJB
     private ItemService itemService;
 
+    private List<Item> selectedItems;
+
+    public List<Item> getSelectedItems() {
+        return selectedItems;
+    }
+
+    public void setSelectedItems(List<Item> selectedItems) {
+        this.selectedItems = selectedItems;
+    }
+
     public List<Item> getItemList() {
         return itemService.getAll();
     }

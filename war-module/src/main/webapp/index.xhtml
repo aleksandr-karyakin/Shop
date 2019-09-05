@@ -11,12 +11,13 @@
 </ui:insert>
 <h:body>
     <br/>
-    <h:form id="form">
-        <tp:itemList itemList="${itemsController.itemList}"/>
-        <div style="width: 300px; margin: 30px auto">
-            <tp:selectItem selectItem="#{orderController.selectedItems}"/>
-            <tp:createOrder/>
-        </div>
-    </h:form>
+<!--    <h:form id="form">-->
+<!--        <tp:itemList itemList="${itemsController.itemList}"/>-->
+<!--        <div style="width: 300px; margin: 30px auto">-->
+<!--            <tp:selectItem selectItem="#{orderController.selectedItems}"/>-->
+<!--            <tp:createOrder/>-->
+<!--        </div>-->
+<!--    </h:form>-->
+    <tp:itemTable itemList="${itemsController.itemList}" selectedItems="${orderController.selectedItems}"/>
 </h:body>
 </html>

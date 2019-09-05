@@ -12,6 +12,15 @@
         </attribute>
     </tag>
     <tag>
+        <tag-name>itemTable</tag-name>
+        <source>ItemTable.xhtml</source>
+        <attribute>
+            <description>List of items</description>
+            <name>itemList</name>
+            <type>java.util.List</type>
+        </attribute>
+    </tag>
+    <tag>
         <tag-name>itemList</tag-name>
         <source>Item.xhtml</source>
         <attribute>
