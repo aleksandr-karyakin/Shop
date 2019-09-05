@@ -7,8 +7,9 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:tp="http://java.sun.com/jsf/composite/components"
       xmlns:p="http://primefaces.org/ui">
-<h:head>
-</h:head>
+<ui:insert name="header" >
+    <ui:include src="templates/header.xhtml" />
+</ui:insert>
 <h:body>
     <tp:itemTables orderItems="#{orderController.getOrder(param['id']).orderItems}"/>
 </h:body>

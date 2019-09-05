@@ -24,10 +24,10 @@
             <p:column id="count" headerText="Count">
                 <h:form>
                     <p:inputText id="name" binding="#{input1}"/>
-                    <p:commandButton value="Submit" update="table sum" icon="ui-icon-check" action="#{orderController.changeCount(orderItem.id, input1.value)}">
+                    <p:commandButton value="Change" update="table sum" icon="ui-icon-check" action="#{orderController.changeCount(orderItem.id, input1.value)}">
                         <f:param name="id" value="#{param['id']}" />
                     </p:commandButton>
-                    <h:outputText id="display" value="#{orderItem.count}" binding="#{colCount}"/>
+                    <h:outputText id="display" value="#{orderItem.count}" binding="#{colCount}" style="padding-left: 5px"/>
                 </h:form>
             </p:column>
 
@@ -37,7 +37,7 @@
 
             <p:column headerText="Delete">
                 <h:form>
-                    <p:commandButton icon="ui-icon-trash" title="Delete this actor" actionListener="#{orderController.deleteItemFromOrder(param['id'], orderItem.id)}" ajax="false">
+                    <p:commandButton icon="ui-icon-trash" title="Delete this item" actionListener="#{orderController.deleteItemFromOrder(param['id'], orderItem.id)}" ajax="false">
                         <f:param name="id" value="#{param['id']}" />
                     </p:commandButton>
                 </h:form>
@@ -46,8 +46,8 @@
 
         <h:outputText id="sum"  value="Sum: #{orderController.getOrderSum(param['id'])}" style="float: right; margin: 50px; font-weight: bold"/>
 
-        <h:form>
-            <p:commandButton value="Submit" actionListener="#{orderController.sendOrder(param['id'])}" ajax="false">
+        <h:form style="width: 200px; margin: 30px auto">
+            <p:commandButton value="Send order" actionListener="#{orderController.sendOrder(param['id'])}" ajax="false">
                 <f:param name="id" value="#{param['id']}" />
             </p:commandButton>
         </h:form>
