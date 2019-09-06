@@ -36,9 +36,7 @@
             </p:column>
 
             <p:column headerText="Prepayment">
-                <c:if test="${not empty order.prepayment}">
-                    <h:outputText var="prepayment" value="#{order.prepayment}"/>
-                </c:if>
+                <h:outputText value="#{orderController.getPrepayment(order.id)}"/>
             </p:column>
         </p:dataTable>
     </ui:composition>

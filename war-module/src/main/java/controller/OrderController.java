@@ -46,6 +46,13 @@ public class OrderController {
         } else return "no address";
     }
 
+    public Integer getPrepayment(Integer id) {
+        Order order = getOrder(id);
+        if (order instanceof PrepaymentOrder) {
+            return ((PrepaymentOrder) order).getPrepayment();
+        } else return 0;
+    }
+
     public Order getOrder(Integer id) {
         return orderService.get(id);
     }
